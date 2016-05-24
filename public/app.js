@@ -1,10 +1,18 @@
 //Main file
-var app = angular.module('superheroApp', ['addSuperheroCtrl',  'ngRoute', 'angular-filepicker'])
+var app = angular.module('superheroApp', ['addSuperheroCtrl', 'galleryCtrl', 'ngRoute', 'angular-filepicker'])
     .config(function($routeProvider, filepickerProvider){
         //The route provider handles the client request to switch route
         $routeProvider.when('/addSuperhero', {          
             templateUrl: 'partials/addSuperhero.html',
-                        controller: 'addSuperheroController'            
+            controller: 'addSuperheroController'            
+        })
+        .when('/gallery', {
+            templateUrl: 'partials/gallery.html',
+            controller: 'galleryController'
+        })
+        .when('/detail/:id', {
+            templateUrl: 'partials/detail.html',
+            controller: 'detailController'
         })
         //Redirect to addSuperhero in all the other cases.
         .otherwise({redirectTo:'/addSuperhero'});
